@@ -21,14 +21,14 @@ before_script:
 
 script:
     echo "building..."
-    ./configure --enable-gcov && make && make check
-
+    make
 
 before_cache:
     echo "before cache"
 
 after_success:
     echo "after success"
+    ./bash < test
     coveralls --exclude lib --exclude tests --gcov-options '\-lp'
 
 after_failure:
