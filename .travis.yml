@@ -4,7 +4,6 @@ os: linux
 bracnhes:
   only:
   - master
-        
 
 compiler:
     - gcc
@@ -27,9 +26,9 @@ before_cache:
     echo "before cache"
 
 after_success:
-    echo "after success"
-    ./bash < test
-    coveralls --exclude lib --exclude tests --gcov-options '\-lp'
+    - echo "after success"
+    - ./bash < test
+    - bash <(curl -s https://codecov.io/bash)
 
 after_failure:
     echo "after failure"
@@ -49,3 +48,4 @@ after_deploy:
 
 after_script:
     echo " after script"
+
