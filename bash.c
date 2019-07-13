@@ -28,7 +28,7 @@ void ctrl_c_handler(int sig) {
     int status = 0;
     if (getpid() == parent_pid) {
         kill(-parent_pid, SIGTERM);
-        int cpid = waitpid(parent_pid, &status, WNOHANG);
+        waitpid(parent_pid, &status, WNOHANG);
     } else {
         exit(0);
     }
@@ -65,7 +65,7 @@ void assign_args(char **args[length], int t, char buffer[64][256], int index) {
 void string_parse(char *strs, int *ncommands, char **args[length])
 {
     const char *DELIM = "\t\r\n\a ";
-    int index = 0, t = 0, idx = 0, jdx = 0;
+    int index = 0, t = 0;
     char buffer[64][256] = {{0}};
     char *token = strtok(strs, DELIM);
     while (token != NULL) {
@@ -132,7 +132,7 @@ void parse_sub_command(char **args[length], int index, int *out_to_file,
             token = args[index][t] = NULL;
         }
         if (token && (token[0] == '<' || token[0] == '>' || 
-            strlen(token) == 2 && token[0] == '2' && token[1] == '>')) {
+            (strlen(token) == 2 && token[0] == '2' && token[1] == '>'))) {
             *in_to_file = *token == '<';
             *out_to_file = *token == '>';
             i_append = strlen(token) == 2 && token[1] == '<';
@@ -169,7 +169,7 @@ void execute_internal(int ncommands, char **args[length], int index) {
 void execute(int ncommands, char **args[length], int index, int *pfd, 
              int *ofile, int *ifile, int *efile) {
     if (ncommands == index) return;
-    int fd[2], status = 0, childpid, file;
+    int fd[2], status = 0, childpid;
     int out_to_file = false, in_to_file = false, eout_to_file = false;
     int out_combine = false, err_combine = false, back_ground = false, internal_command=false;
     if (pipe(fd) == -1) {
@@ -288,7 +288,7 @@ int main(void)
         char strs[MAX_LINE] = {0};
         memset(args, 0, sizeof(args));
         printf("osh#");
-        fgets(strs, length, stdin);
+        if (fgets(strs, length, stdin)==NULL) should_run=0;
         if (strs[0] == '\n') continue;
         if (strncmp(strs, "exit\n", 5)==0) break;
         if (strlen(strs) == 3 && 
