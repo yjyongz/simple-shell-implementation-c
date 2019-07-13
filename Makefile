@@ -1,8 +1,8 @@
 all:
-	gcc -o bash -fprofile-arcs -ftest-coverage bash.c -g3
+	gcc -o mshell -fprofile-arcs -ftest-coverage bash.c -g3
 clean:
-	rm bash
-	rm bash.c.gcov
-	rm -rf bash.dSYM
-	rm bash.gcda
-	rm bash.gcno
+	rm mshell
+	rm mshell.c.gcov
+	rm -rf mshell.dSYM
+	rm mshell.gcda
+	rm mshell.gcno
