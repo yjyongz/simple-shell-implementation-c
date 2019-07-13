@@ -31,6 +31,7 @@ before_cache:
 after_success:
     - echo "after success"
     - ./mshell < test
+    - gcov bash.c 
     - bash <(curl -s https://codecov.io/bash)
 
 after_failure:
