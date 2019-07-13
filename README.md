@@ -8,7 +8,7 @@
 5. support background running e.g: ampersand support (&)
 
 ## How To Run It
-![alt text](https://terminalizer.com/view/7d98c5c21408 "make and run")
+<img src="https://bayes.la/wp-content/uploads/2019/07/make_and_run-1.gif"></img>
 
 ## Limitation:
 1. jobs lists.
