@@ -13,18 +13,19 @@ env:
         - CODECOV_TOKEN="49b7243b-7efa-423f-ac5b-01a5010e5cf7"
 
 before_install:
-    echo "Before Install prerequite"
-    pip install coveragepy
+   - echo "Before Install prerequite"
+   - pip install coveragepy
 
 install:
     echo "Installing prerequite"
 
 before_script:
-    echo "before script"
+    - echo "before script " `pwd`
+
 
 script:
-    echo "building..."
-    make
+   - echo "building..."
+   - make
 
 before_cache:
     echo "before cache"
