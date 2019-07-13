@@ -1,0 +1,5 @@
+# Used in Codecov after updating
+coverage:
+  round: up
+  range: 50..70
+  precision: 5
