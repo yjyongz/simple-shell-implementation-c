@@ -14,7 +14,7 @@ env:
 
 before_install:
    - echo "Before Install prerequite"
-   - pip install coveragepy
+   - pip3 install coveragepy
 
 install:
     echo "Installing prerequite"
