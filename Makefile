@@ -1,5 +1,5 @@
 all:
-	clang -coverage -O0  bash.c -o mshell
+	CC -coverage -O0  bash.c -o mshell
 clean:
 	rm mshell
 	rm mshell.c.gcov
