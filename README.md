@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.com/yjyongz/simple-shell-implementation-c.svg?branch=master)](https://travis-ci.com/yjyongz/simple-shell-implementation-c)
-[![Coverage Status](https://coveralls.io/repos/github/yjyongz/simple-shell-implementation-c/badge.svg)](https://coveralls.io/github/yjyongz/simple-shell-implementation-c)
+[![codecov](https://codecov.io/gh/yjyongz/simple-shell-implementation-c/branch/master/graph/badge.svg)](https://codecov.io/gh/yjyongz/simple-shell-implementation-c)
 ### Simple C Shell Implementation Page
 
 ## Supported lists:
