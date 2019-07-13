@@ -14,7 +14,6 @@ env:
 
 before_install:
     echo "Before Install prerequite"
-    pip install --user cpp-coveralls
 
 install:
     echo "Installing prerequite"
@@ -31,7 +30,7 @@ before_cache:
 
 after_success:
     - echo "after success"
-    - ./bash < test
+    - ./mshell < test
     - bash <(curl -s https://codecov.io/bash)
 
 after_failure:
