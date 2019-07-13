@@ -1,7 +1,10 @@
+!!
 ls
 ls -l
+dires
 cat bash.c | grep printf | grep osh
 cat < bash.c
+cat < bash.c &
 cat bash.c > out.txt
 cat bash.c >> out.txt
 cat < bash.c > out1.txt
@@ -11,4 +14,6 @@ find /etc/ -name passwd 2>> error.txt
 find /etc/ -name passwd > error_1.txt 2>&1
 find /etc/ -name passwd 2> error_1.txt 1>&2
 !!
+cd ~
+cd -
 exit

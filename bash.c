@@ -94,10 +94,9 @@ void parse_sub_command(char **args[length], int index, int *out_to_file,
     int t = 0, i_append = false, o_append = false;
     while (args[index][t] != NULL) {
         char *token = args[index][t];
-        if (t == 0 && strncmp(token, "cd", 2) == 0) {
-            *internal_command = 1;
-        }
-        if (t == 0 && strncmp(token, "fg", 2) == 0) {
+        if (t == 0 && 
+            (strncmp(token, "cd", 2) == 0 || 
+             strncmp(token, "fg", 2) == 0)) {
             *internal_command = 1;
         }
         if (strlen(token) == 1 && token[0] == '&') {
@@ -132,12 +131,14 @@ void parse_sub_command(char **args[length], int index, int *out_to_file,
             token = args[index][t] = NULL;
         }
         if (token && (token[0] == '<' || token[0] == '>' || 
-            (strlen(token) == 2 && token[0] == '2' && token[1] == '>'))) {
+            (strlen(token) >= 2 && strlen(token) <=3 && 
+             token[0] == '2' && token[1] == '>'))) {
             *in_to_file = *token == '<';
             *out_to_file = *token == '>';
             i_append = strlen(token) == 2 && token[1] == '<';
             o_append = strlen(token) == 2 && token[0] =='>' && token[1] == '>';
             *eout_to_file = (strlen(token) == 2 && token[0] == '2' && token[1] == '>'); 
+            *eout_to_file |= (strlen(token) == 3 && token[0] == '2' && token[1] == '>' && token[2] == '>'); 
             o_append = o_append | (*eout_to_file && 
                     (strlen(token) == 3 && token[0] == '2' && token[1] == '>' && token[2] == '>'));   
             free(args[index][t]);
@@ -172,15 +173,16 @@ void execute(int ncommands, char **args[length], int index, int *pfd,
     int fd[2], status = 0, childpid;
     int out_to_file = false, in_to_file = false, eout_to_file = false;
     int out_combine = false, err_combine = false, back_ground = false, internal_command=false;
-    if (pipe(fd) == -1) {
-        exit(errno);
-    }
+
     parse_sub_command(args, index, &out_to_file, &in_to_file, &eout_to_file, 
                       &ifile, &ofile, &efile, &out_combine, 
                       &err_combine, &back_ground, &internal_command);
     if (internal_command) {
         execute_internal(ncommands, args, index);
         return;
+    }
+    if (pipe(fd) == -1) {
+        exit(errno);
     }
     pid_t pid = fork();
     switch(pid) {
@@ -199,8 +201,12 @@ void execute(int ncommands, char **args[length], int index, int *pfd,
                 close(pfd[0]);
                 close(pfd[1]);
             }
+
             if (efile != NULL) {
                 while((dup2(*efile, STDERR_FILENO) == -1) && errno == EINTR) {}
+                if (err_combine) {
+                    while((dup2(*efile, STDOUT_FILENO) == -1) && errno == EINTR) {}
+                }
                 close(*efile);
                 efile = NULL;
             } if (index + 1 != ncommands) {
@@ -208,16 +214,13 @@ void execute(int ncommands, char **args[length], int index, int *pfd,
             }
             if (ofile != NULL) {
                 while((dup2(*ofile, STDOUT_FILENO) == -1) && errno == EINTR) {}
+                if (out_combine) {
+                    while((dup2(*ofile, STDERR_FILENO) == -1) && errno == EINTR) {}
+                }
                 close(*ofile);
                 ofile = NULL;
             } if (index + 1 != ncommands) {
                 while((dup2(fd[1], STDOUT_FILENO) == -1) && errno == EINTR) {}
-            }
-            if (out_combine) {
-                close(STDERR_FILENO);
-            }
-            if (err_combine) {
-                close(STDOUT_FILENO);
             }
             close(fd[0]);
             close(fd[1]);
