@@ -8,6 +8,10 @@ bracnhes:
 compiler:
     - gcc
 
+env:
+    global:
+        - CODECOV_TOKEN="49b7243b-7efa-423f-ac5b-01a5010e5cf7"
+
 before_install:
     echo "Before Install prerequite"
     pip install --user cpp-coveralls
