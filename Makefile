@@ -1,5 +1,5 @@
 all:
-	gcc -o mshell -fprofile-arcs -ftest-coverage bash.c -g3
+	clang -coverage -O0  bash.c -o mshell
 clean:
 	rm mshell
 	rm mshell.c.gcov
