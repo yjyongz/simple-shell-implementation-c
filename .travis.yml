@@ -12,7 +12,6 @@ python: 3.7
 
 before_install:
    - echo "Before Install prerequite"
-   - pip3 install coveragepy
 
 install:
     echo "Installing prerequite"
