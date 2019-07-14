@@ -19,6 +19,9 @@
 #### stdin and stdout IO redirection
 <img src="https://bayes.la/wp-content/uploads/2019/07/stdout_redirection.gif"></img>
 
+#### stderr and stdout redirection
+<img src="https://bayes.la/wp-content/uploads/2019/07/stderr_redirection.gif"></img
+
 ## Limitation:
 1. jobs lists.
     - as of now, this shell cannot list background jobs that are running.
