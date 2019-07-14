@@ -79,6 +79,7 @@ I adopted a recursive approach to deal with multiple pipelines.
 invoke: func(0, 4)
 
 
+```
 func(index_of_commands, total_commands):
 
     if index_of_commands == total_commands: return
@@ -94,7 +95,8 @@ func(index_of_commands, total_commands):
         func(index_of_commands+1, total_commands)
         
         waitpid();
-        
+```
+
 
 #### history
 
