@@ -75,28 +75,47 @@ args[4][4] = NULL
 
 #### pipeline
 I adopted a recursive approach to deal with multiple pipelines.
+
 invoke: func(0, 4)
 
+
 func(index_of_commands, total_commands):
+
     if index_of_commands == total_commands: return
+    
     pid = fork()
+    
     if pid == 0:
+    
         execvp();
+        
     else:
+    
         func(index_of_commands+1, total_commands)
+        
         waitpid();
+        
 
 #### history
+
 it's a circular buffer
+
 char *history[MAX_LENGTH]; >>> number of history to remember
+
 int index = 0 >>> init index
+
 index = (index + 1) % MAX_LENGTH >>>move to next item
 
 
+
 #### signal handler
+
 you need to register SIGINT with shell process. 
+
 and then we need to send minus pid value (which will send a SIGTERM to all the child processes in the same process group)
+
 kill(-pid, SIGTERM)
+
 
 
 ## Limitation:
