@@ -3,6 +3,10 @@
 
 ### Simple C Shell Implementation Page
 
+## Project Demo
+please try it!
+https://yjyongz.github.io/simple-shell-implementation-c/
+
 ## Supported lists:
 1. internal command: cd
 2. history support e.g: !! to execute the most recent command.
