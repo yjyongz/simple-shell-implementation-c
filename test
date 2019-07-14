@@ -16,4 +16,5 @@ find /etc/ -name passwd 2> error_1.txt 1>&2
 !!
 cd ~
 cd -
+cat /usr/share/dict/words | grep main | grep rem | grep der | grep ip > output2.txt
 exit

@@ -10,12 +10,11 @@
 #include <sys/wait.h>
 #include <errno.h>
 
-#define MAX_LINE 80 /* The maximum length command */
+#define MAX_LINE 80 * 2/* The maximum length command */
 #define HLENGTH 256
 int should_run = 1;
 char *hist[HLENGTH] = {0};
 int cur = 0;
-const int length = MAX_LINE * 2;
 pid_t parent_pid = 0;
 
 void term_handler(int sig) {
@@ -52,7 +51,7 @@ char* getHistory() {
     } 
     return t;
 }
-void assign_args(char **args[length], int t, char buffer[64][256], int index) {
+void assign_args(char **args[MAX_LINE], int t, char buffer[64][256], int index) {
     args[index] = calloc(1, sizeof(char**)*(t+1)); 
     int idx = 0;
     for (idx=0; idx < t; idx++) {
@@ -62,7 +61,7 @@ void assign_args(char **args[length], int t, char buffer[64][256], int index) {
     }
 }
 
-void string_parse(char *strs, int *ncommands, char **args[length])
+void string_parse(char *strs, int *ncommands, char **args[MAX_LINE])
 {
     const char *DELIM = "\t\r\n\a ";
     int index = 0, t = 0;
@@ -86,7 +85,7 @@ void string_parse(char *strs, int *ncommands, char **args[length])
     *ncommands = index; 
 }
 
-void parse_sub_command(char **args[length], int index, int *out_to_file, 
+void parse_sub_command(char **args[MAX_LINE], int index, int *out_to_file, 
                        int *in_to_file, int *eout_to_file, 
                        int **ifile, int **ofile, int **efile, 
                        int *out_combine, int *err_combine, 
@@ -158,7 +157,7 @@ void parse_sub_command(char **args[length], int index, int *out_to_file,
     }
 }
 
-void execute_internal(int ncommands, char **args[length], int index) {
+void execute_internal(int ncommands, char **args[MAX_LINE], int index) {
     if (strncmp(args[index][0], "cd", 2) == 0) {
         chdir(args[index][1]);
     }
@@ -167,7 +166,7 @@ void execute_internal(int ncommands, char **args[length], int index) {
     return;
 }
 
-void execute(int ncommands, char **args[length], int index, int *pfd, 
+void execute(int ncommands, char **args[MAX_LINE], int index, int *pfd, 
              int *ofile, int *ifile, int *efile) {
     if (ncommands == index) return;
     int fd[2], status = 0, childpid;
@@ -233,11 +232,6 @@ void execute(int ncommands, char **args[length], int index, int *pfd,
                 close(pfd[0]);
                 close(pfd[1]);
             }
-            if (back_ground == true) {
-                childpid = waitpid(pid, &status, WNOHANG);
-            } else {
-                childpid = waitpid(pid, &status, 0);
-            }
             if (ifile) {
                 close(*ifile);
                 free(ifile);
@@ -256,10 +250,15 @@ void execute(int ncommands, char **args[length], int index, int *pfd,
             execute(ncommands, args, index+1, fd, ofile, ifile, efile);
             close(fd[0]);
             close(fd[1]);
+            if (back_ground == true) {
+                childpid = waitpid(pid, &status, WNOHANG);
+            } else {
+                childpid = waitpid(pid, &status, 0);//wait(&pid);
+            }
     }
 }
 
-void free_args(char **args[length], int ncommands) {
+void free_args(char **args[MAX_LINE], int ncommands) {
     int index = 0, jdx = 0;
     for (index = 0; index < ncommands; index++) {
         for(jdx = 0; args[index][jdx] != NULL; jdx++) {
@@ -284,14 +283,14 @@ int main(void)
      * args[1][0] = less
      * args[1][1] = NULL
      */
-    char **args[length];
+    char **args[MAX_LINE];
     parent_pid = getpid();
     while (should_run) {
         int ncommands = 0;
         char strs[MAX_LINE] = {0};
         memset(args, 0, sizeof(args));
         printf("osh#");
-        if (fgets(strs, length, stdin)==NULL) should_run=0;
+        if (fgets(strs, MAX_LINE, stdin)==NULL) should_run=0;
         if (strs[0] == '\n') continue;
         if (strncmp(strs, "exit\n", 5)==0) break;
         if (strlen(strs) == 3 && 

@@ -25,6 +25,10 @@
 #### stderr and stdout combine redirection e.g > 2>&1 and 2> 1>&2
 <img src="https://bayes.la/wp-content/uploads/2019/07/io_combine.gif"></img>
 
+#### pipeline
+<img src="https://bayes.la/wp-content/uploads/2019/07/pipeline.gif"></img>
+
+
 ## Limitation:
 1. jobs lists.
     - as of now, this shell cannot list background jobs that are running.
