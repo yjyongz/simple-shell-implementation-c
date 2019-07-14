@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper{
+    width: 960px;
+    margin: 0 auto;
+    padding-top: 50px;
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #232323;
+}
+
+.tty{
+    width: 90%;
+    margin: 0 auto;
+    color: #F4F4F4;
+    position: relative;
+    height: 100vh;
+    background-color: #232323;
+    display: none; 
+}
+
+@media screen and (max-width: 767px) {
+    .wrapper{
+        width: 100%;
+        font-size: 4vw;
+    }
+}
+.tty.show{
+    display: block;
+}
+
+.tty > p{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #232323;
+}
+.tty.show > p{
+    opacity: 0;
+    animation-name: foo;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.tty p:before{
+    content: "console# ";
+}
+
+.tty p:nth-of-type(1) { animation-delay: 0s; }
+.tty p:nth-of-type(2) { animation-delay: 0.1s; }
+.tty p:nth-of-type(3) { animation-delay: 0.2s; }
+.tty p:nth-of-type(4) { animation-delay: 0.3s; }
+.tty p:nth-of-type(5) { animation-delay: 0.4s; }
+.tty p:nth-of-type(6) { animation-delay: 0.5s; }
+.tty p:nth-of-type(7) { animation-delay: 0.6s; }
+.tty p:nth-of-type(8) { animation-delay: 0.7s; }
+.tty p:nth-of-type(9) { animation-delay: 0.8s; }
+.tty p:nth-of-type(10) { animation-delay: 0.9s; }
+.tty p:nth-of-type(11) { animation-delay: 1s; }
+.tty p:nth-of-type(12) { animation-delay: 1.1s; }
+.tty p:nth-of-type(13) { animation-delay: 1.2s; }
+
+@keyframes foo{
+    0% {
+        opacity: 0;
+    }
+    99%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+span.cursor{
+    display: inline-block;
+    width: 0.5em;
+    height: 1em;
+    vertical-align: middle;
+    background-color: rgba(128, 128, 128, 0.8);
+}
+
+/*
+ * Blink cursor
+ * Ref) https://qiita.com/zr_tex8r/items/6122e24878993cf59a9f
+ */
+    @keyframes blink {
+        75% { opacity: 0.0; }
+    }
+    @-webkit-keyframes blink {
+        75% { opacity: 0.0; }
+    }
+    span.cursor {
+        animation: blink 0.5s step-end infinite;
+        -webkit-animation: blink 0.5s step-end infinite;    /* for Safari */
+    }
+
