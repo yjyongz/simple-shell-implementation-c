@@ -1,0 +1,437 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: bash -l
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: /nobackup/shenma/simple-shell-implementation-c
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 70
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 21
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: Terminalizer
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 955
+    content: "\e]0;shenma@shenma-VirtualBox:/nobackup/shenma/simple-shell-implementation-c\a\e]7;file://shenma-VirtualBox/nobackup/shenma/simple-shell-implementation-c\a17:03:16 shenma$"
+  - delay: 803
+    content: "\r\n\e]0;shenma@shenma-VirtualBox:/nobackup/shenma/simple-shell-implementation-c\a\e]7;file://shenma-VirtualBox/nobackup/shenma/simple-shell-implementation-c\a17:03:17 shenma$"
+  - delay: 138
+    content: "\r\n\e]0;shenma@shenma-VirtualBox:/nobackup/shenma/simple-shell-implementation-c\a\e]7;file://shenma-VirtualBox/nobackup/shenma/simple-shell-implementation-c\a17:03:17 shenma$"
+  - delay: 364
+    content: p
+  - delay: 63
+    content: w
+  - delay: 72
+    content: d
+  - delay: 191
+    content: "\r\n/nobackup/shenma/simple-shell-implementation-c\r\n\e]0;shenma@shenma-VirtualBox:/nobackup/shenma/simple-shell-implementation-c\a\e]7;file://shenma-VirtualBox/nobackup/shenma/simple-shell-implementation-c\a17:03:18 shenma$"
+  - delay: 555
+    content: m
+  - delay: 102
+    content: a
+  - delay: 90
+    content: k
+  - delay: 70
+    content: e
+  - delay: 208
+    content: "\r\ncc -coverage -O0  bash.c -o mshell -g3\r\n"
+  - delay: 162
+    content: "\e]0;shenma@shenma-VirtualBox:/nobackup/shenma/simple-shell-implementation-c\a\e]7;file://shenma-VirtualBox/nobackup/shenma/simple-shell-implementation-c\a17:03:19 shenma$"
+  - delay: 530
+    content: .
+  - delay: 222
+    content: /
+  - delay: 296
+    content: m
+  - delay: 86
+    content: s
+  - delay: 170
+    content: h
+  - delay: 298
+    content: 'ell '
+  - delay: 523
+    content: "\r\nosh#"
+  - delay: 795
+    content: "\r\nosh#"
+  - delay: 152
+    content: "\r\nosh#"
+  - delay: 694
+    content: p
+  - delay: 78
+    content: w
+  - delay: 74
+    content: d
+  - delay: 205
+    content: "\r\n/nobackup/shenma/simple-shell-implementation-c\r\nosh#"
+  - delay: 588
+    content: l
+  - delay: 125
+    content: s
+  - delay: 219
+    content: "\r\nbash.c\tbash.gcda  bash.gcno  cd_fg.yml  _config.yml  error_1.txt  error.txt  index.html  Makefile  mshell  out1.txt  out.txt  README.md  test\ttest1  test.c\r\nosh#"
+  - delay: 4509
+    content: c
+  - delay: 138
+    content: d
+  - delay: 97
+    content: ' '
+  - delay: 669
+    content: .
+  - delay: 118
+    content: .
+  - delay: 286
+    content: "\r\nosh#"
+  - delay: 316
+    content: p
+  - delay: 71
+    content: w
+  - delay: 73
+    content: d
+  - delay: 159
+    content: "\r\n/nobackup/shenma\r\nosh#"
+  - delay: 541
+    content: c
+  - delay: 159
+    content: d
+  - delay: 112
+    content: ' '
+  - delay: 403
+    content: s
+  - delay: 113
+    content: i
+  - delay: 124
+    content: m
+  - delay: 140
+    content: p
+  - delay: 182
+    content: l
+  - delay: 52
+    content: e
+  - delay: 252
+    content: '-'
+  - delay: 93
+    content: s
+  - delay: 158
+    content: h
+  - delay: 79
+    content: e
+  - delay: 127
+    content: l
+  - delay: 124
+    content: l
+  - delay: 277
+    content: '-'
+  - delay: 242
+    content: i
+  - delay: 125
+    content: m
+  - delay: 149
+    content: p
+  - delay: 205
+    content: l
+  - delay: 125
+    content: e
+  - delay: 104
+    content: m
+  - delay: 93
+    content: e
+  - delay: 104
+    content: 'n'
+  - delay: 86
+    content: t
+  - delay: 250
+    content: a
+  - delay: 84
+    content: t
+  - delay: 88
+    content: i
+  - delay: 80
+    content: o
+  - delay: 58
+    content: 'n'
+  - delay: 118
+    content: ' '
+  - delay: 360
+    content: "\b \b"
+  - delay: 245
+    content: '-'
+  - delay: 153
+    content: c
+  - delay: 237
+    content: "\r\nosh#"
+  - delay: 1077
+    content: p
+  - delay: 74
+    content: w
+  - delay: 90
+    content: d
+  - delay: 162
+    content: "\r\n/nobackup/shenma/simple-shell-implementation-c\r\nosh#"
+  - delay: 1364
+    content: "\r\nosh#"
+  - delay: 330
+    content: c
+  - delay: 96
+    content: a
+  - delay: 116
+    content: t
+  - delay: 100
+    content: ' '
+  - delay: 304
+    content: t
+  - delay: 74
+    content: e
+  - delay: 58
+    content: s
+  - delay: 93
+    content: t
+  - delay: 159
+    content: .
+  - delay: 160
+    content: c
+  - delay: 735
+    content: "\r\n#include <stdio.h>\r\n#include <unistd.h>\r\n\r\nint main() {\r\n    int idx = 0;\r\n    for (;;) {\r\n        printf(\"index: %d\\n\", idx++);\r\n        sleep(1);\r\n    }\r\n    return 0;\r\n}\r\nosh#"
+  - delay: 1355
+    content: g
+  - delay: 204
+    content: c
+  - delay: 113
+    content: c
+  - delay: 118
+    content: ' '
+  - delay: 289
+    content: '-'
+  - delay: 227
+    content: o
+  - delay: 163
+    content: ' '
+  - delay: 288
+    content: t
+  - delay: 72
+    content: e
+  - delay: 68
+    content: s
+  - delay: 81
+    content: t
+  - delay: 320
+    content: '1'
+  - delay: 333
+    content: ' '
+  - delay: 91
+    content: t
+  - delay: 85
+    content: e
+  - delay: 43
+    content: s
+  - delay: 88
+    content: t
+  - delay: 150
+    content: .
+  - delay: 154
+    content: c
+  - delay: 286
+    content: "\r\n"
+  - delay: 44
+    content: 'osh#'
+  - delay: 614
+    content: .
+  - delay: 228
+    content: /
+  - delay: 239
+    content: t
+  - delay: 63
+    content: e
+  - delay: 56
+    content: s
+  - delay: 99
+    content: t
+  - delay: 241
+    content: '1'
+  - delay: 628
+    content: "\r\nindex: 0\r\n"
+  - delay: 1001
+    content: "index: 1\r\n"
+  - delay: 1000
+    content: "index: 2\r\n"
+  - delay: 1001
+    content: "index: 3\r\n"
+  - delay: 745
+    content: '^Cosh#'
+  - delay: 420
+    content: "\r\nosh#"
+  - delay: 276
+    content: "\r\nosh#"
+  - delay: 1580
+    content: .
+  - delay: 214
+    content: /
+  - delay: 100
+    content: t
+  - delay: 65
+    content: e
+  - delay: 57
+    content: s
+  - delay: 77
+    content: t
+  - delay: 392
+    content: '1'
+  - delay: 279
+    content: ' '
+  - delay: 717
+    content: '&'
+  - delay: 1279
+    content: "\r\nosh#index: 0\r\n"
+  - delay: 1001
+    content: "index: 1\r\n"
+  - delay: 1001
+    content: "index: 2\r\n"
+  - delay: 459
+    content: "\r\nosh#"
+  - delay: 160
+    content: "\r\nosh#"
+  - delay: 198
+    content: "\r\nosh#"
+  - delay: 145
+    content: "\r\nosh#"
+  - delay: 39
+    content: "index: 3\r\n"
+  - delay: 175
+    content: "\r\nosh#\r\nosh#"
+  - delay: 656
+    content: l
+  - delay: 128
+    content: s
+  - delay: 37
+    content: "index: 4\r\n"
+  - delay: 151
+    content: ' '
+  - delay: 273
+    content: "\r\nbash.c\tbash.gcda  bash.gcno  cd_fg.yml  _config.yml  error_1.txt  error.txt  index.html  Makefile  mshell  out1.txt  out.txt  README.md  test\ttest1  test.c\r\nosh#"
+  - delay: 577
+    content: "index: 5\r\n"
+  - delay: 128
+    content: "\r\nosh#"
+  - delay: 152
+    content: "\r\nosh#"
+  - delay: 153
+    content: "\r\nosh#"
+  - delay: 568
+    content: "index: 6\r\n"
+  - delay: 631
+    content: e
+  - delay: 199
+    content: x
+  - delay: 88
+    content: i
+  - delay: 83
+    content: "index: 7\r\n"
+  - delay: 50
+    content: t
+  - delay: 152
+    content: "\r\n"
+  - delay: 5
+    content: "\e]0;shenma@shenma-VirtualBox:/nobackup/shenma/simple-shell-implementation-c\a\e]7;file://shenma-VirtualBox/nobackup/shenma/simple-shell-implementation-c\a17:04:05 shenma$"
+  - delay: 794
+    content: "index: 8\r\n"
+  - delay: 451
+    content: "logout\r\n"
