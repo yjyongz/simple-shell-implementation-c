@@ -16,6 +16,8 @@
 #### cd and fg commands
 <img src="https://bayes.la/wp-content/uploads/2019/07/cd_and_foge.gif"></img>
 
+#### stdin and stdout IO redirection
+<img src="https://bayes.la/wp-content/uploads/2019/07/stdout_redirection.gif"></img>
 
 ## Limitation:
 1. jobs lists.
