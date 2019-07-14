@@ -30,25 +30,48 @@
 
 ## Design Consideration
 #### key data strucutre
-char** args[160]; --> why 160? you can have your own number. make sure it is big enough to cover most of shell commands.
+char** args[160]; 
+
+why 160? you can have your own number. make sure it is big enough to cover most of shell commands.
+
+
 e.g: cat /usr/share/dict/words | grep main | grep rem | grep der | grep ip > output2.txt
+
+
 args[0][0] = cat
+
 args[0][1] = /usr/share/dict/words
+
 args[0][2] = NULL
+
 args[1][0] = grep
+
 args[1][1] = main
+
 args[1][2] = NULL
+
 args[2][0] = grep
+
 args[2][1] = rem
+
 args[2][2] = NULL
+
 args[3][0] = grep
+
 args[3][1] = der
+
 args[3][2] = NULL
+
 args[4][0] = grep
+
 args[4][1] = ip
+
 args[4][2] = >
+
 args[4][3] = output2.txt
+
 args[4][4] = NULL
+
 
 #### pipeline
 I adopted a recursive approach to deal with multiple pipelines.
