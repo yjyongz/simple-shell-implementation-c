@@ -13,14 +13,17 @@
 ## How To Run It
 <img src="https://bayes.la/wp-content/uploads/2019/07/make_and_run-1.gif"></img>
 
-#### cd and fg commands
+#### cd commands
 <img src="https://bayes.la/wp-content/uploads/2019/07/cd_and_foge.gif"></img>
 
-#### stdin and stdout IO redirection
+#### stdin and stdout IO redirection e.g < , > and >>
 <img src="https://bayes.la/wp-content/uploads/2019/07/stdout_redirection.gif"></img>
 
-#### stderr and stdout redirection
-<img src="https://bayes.la/wp-content/uploads/2019/07/stderr_redirection.gif"></img
+#### stderr and stdout redirection e.g 2> and 2>>
+<img src="https://bayes.la/wp-content/uploads/2019/07/stderr_redirection.gif"></img>
+
+#### stderr and stdout combine redirection e.g > 2>&1 and 2> 1>&2
+<img src="https://bayes.la/wp-content/uploads/2019/07/io_combine.gif"></img>
 
 ## Limitation:
 1. jobs lists.
